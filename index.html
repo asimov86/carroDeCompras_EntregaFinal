@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Inicio SEO -->
+    <!-- Keywords -->
+    <meta name="keywords" content="mercado, compras, comida, online">
+    <!-- Título -->
+    <title>Carrito de compras</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <!-- Descripción -->
+    <meta name="description" content="Venta online de productos alimenticios.">
+    <!-- Estilos BS Online -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Estilo propio -->
+    <link rel="stylesheet" href="./style/style.css"/>
+</head>
+<body>
+    <!--Menu Header-->
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="./images/burger_logo.png" class="logo img-fluid p-2">Burguenator</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Nuestros productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Nuestra tienda</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <section class="container" id="section">
+      <br>
+      <br>
+      <div id="subtitulo">
+        <h2 class="text-start mt-5">Realizá tu pedido.</h2>
+        <hr>
+      </div>
+      
+      <div class="row row-cols-1 row-cols-md-3 g-4 contenedor-productos" id="contenedor-productos">
+      <!--Acá van los productos ofrecidos-->  
+      </div>
+      <hr>
+      <br>
+      <div class="row col-12 contenedor-parrafo my-4">
+      
+        <!--Acá van los productos seleccionados-->  
+      </div> 
+      <div class="row row-cols-1 row-cols-md-3 g-4 contenedor-carrito mt-4" id="carrito">
+      
+        <!--Acá van los productos seleccionados-->  
+      </div> 
+      <div class="botones col-12 mt-4 mb-1" id="botones">
+			  <button class="btn btn-outline-secondary px-5 mx-5 my-1 btnCalcular" type="submit" id="btnCalcular">Calcular compra</button>
+			  <button class="btn btn-outline-secondary px-5 mx-5 my-1 btnBorrar" type="reset" id="btnBorrar">Limpiar compra</button>
+			</div>
+      <br>
+    </section>		
+    <!--Footer-->
+    
+    <footer class="footer">
+        <!-- Pie de página -->
+        <section class="container">
+            <div class="row">
+                <div class="col-6 text-start text-nowrap" id="eslogan">
+                    <p class="animaTexto">You'll be back!</p>
+                </div>   
+                
+                <div class="col-6 " id="redes">
+                    <div class="card-title" >
+                        <p class="h5" id="redes">Seguinos en:</p>
+                    </div>     
+                    <div class="redesSociales" >
+                      <a  href="@inmobgomez"><img src="./images/twitter.png" alt="icono-twitter"></a>
+                      <a  href="@inmobgomez"><img src="./images/facebook.png" alt="icono-facebook"></a>
+                      <a  href="@inmobgomez"><img src="./images/instagram.png" alt="icono-instagram"></a>
+                  </div> 
+                </div>
+            </div>
+            <div class="row text-center" >
+                <div class="col-12 " >
+                    <p class="copyright h6">© 2022 tuCarritoOnline</p>
+                </div> 
+            </div>     
+        </section>		
+    </footer>
+
+<!--Scripts Librerías-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.1/build/global/luxon.min.js"></script>
+    <!--Acá agregaría js propio-->
+    <script src="./js/main.js"></script>
+</body>
+</html>
