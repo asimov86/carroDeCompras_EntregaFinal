@@ -61,7 +61,8 @@ function buscarProducto(id){
     return;
 }
 
-const contenedorProductos = document.querySelector(".contenedor-productos");
+const contenedorComidas = document.querySelector(".contenedor-comidass");
+const contenedorBebidas = document.querySelector(".contenedor-bebidas");
 const contenedorCarrito = document.querySelector(".contenedor-carrito");
 const contenedorParrafo = document.querySelector(".contenedor-parrafo");
 const contenedorBotones = document.querySelector("#botones");
@@ -84,45 +85,91 @@ function traeLocalStorage(){
 
 function mostrarMenu(){
     productos.forEach( function (producto){
-        const divCol = document.createElement('div');
-        divCol.classList.add('col');
+        let {nombre, precio, descripcion, imagen, tipo} = producto;
+        console.log(tipo);
+        if(tipo==="Comida"){
+            console.log("Es comida");
+            const divColComida = document.createElement('div');
+            divColComida.classList.add('col');
 
-        const divCard = document.createElement('div');
-        divCard.classList.add('card');
+            const divCardComida = document.createElement('div');
+            divCardComida.classList.add('card');
 
-        const imagenProducto = document.createElement('img');
-        imagenProducto.src = producto.imagen;
-        imagenProducto.classList.add('card-img-top');
+            const imagenProductoComida = document.createElement('img');
+            imagenProductoComida.src = producto.imagen;
+            imagenProductoComida.classList.add('card-img-top');
 
-        const divCardBody = document.createElement('div');
-        divCardBody.classList.add('card-body');
+            const divCardBodyComida = document.createElement('div');
+            divCardBodyComida.classList.add('card-body');
 
-        const pTitle = document.createElement('p');
-        pTitle.classList.add('card-title');
-        pTitle.textContent = producto.nombre;
+            const pTitleComida = document.createElement('p');
+            pTitleComida.classList.add('card-title');
+            pTitleComida.textContent = producto.nombre;
 
-        const pPrecio = document.createElement('p');
-        pPrecio.classList.add('card-text');
-        pPrecio.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
+            const pPrecioComida = document.createElement('p');
+            pPrecioComida.classList.add('card-text');
+            pPrecioComida.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
 
-        const pText = document.createElement('p');
-        pText.classList.add('card-text');
-        pText.textContent = producto.descripcion;
+            const pTextComida = document.createElement('p');
+            pTextComida.classList.add('card-text');
+            pTextComida.textContent = producto.descripcion;
 
-        const btnComboMenu = document.createElement('button');
+            const btnComboMenuComida = document.createElement('button');
 
-        btnComboMenu.classList.add('btnComboMenu');
-        btnComboMenu.textContent = "Agregar al carro de compras";
-        btnComboMenu.onclick = () => {agregarACarrito(producto.id)}
+            btnComboMenuComida.classList.add('btnComboMenu');
+            btnComboMenuComida.textContent = "Agregar al carro de compras";
+            btnComboMenuComida.onclick = () => {agregarACarrito(producto.id)}
 
-        divCol.appendChild(divCard);
-        divCard.appendChild(imagenProducto);
-        divCard.appendChild(divCardBody);
-        divCardBody.appendChild(pTitle);
-        divCardBody.appendChild(pPrecio);
-        divCardBody.appendChild(pText);
-        divCardBody.appendChild(btnComboMenu);
-        contenedorProductos.appendChild(divCol);
+            divColComida.appendChild(divCardComida);
+            divCardComida.appendChild(imagenProductoComida);
+            divCardComida.appendChild(divCardBodyComida);
+            divCardBodyComida.appendChild(pTitleComida);
+            divCardBodyComida.appendChild(pPrecioComida);
+            divCardBodyComida.appendChild(pTextComida);
+            divCardBodyComida.appendChild(btnComboMenuComida);
+            contenedorComidas.appendChild(divColComida);
+        }else{
+            const divColBebida = document.createElement('div');
+            divColBebida.classList.add('col');
+
+            const divCardBebida = document.createElement('div');
+            divCardBebida.classList.add('card');
+
+            const imagenProductoBebida = document.createElement('img');
+            imagenProductoBebida.src = producto.imagen;
+            imagenProductoBebida.classList.add('card-img-top');
+
+            const divCardBodyBebida = document.createElement('div');
+            divCardBodyBebida.classList.add('card-body');
+
+            const pTitleBebida = document.createElement('p');
+            pTitleBebida.classList.add('card-title');
+            pTitleBebida.textContent = producto.nombre;
+
+            const pPrecioBebida = document.createElement('p');
+            pPrecioBebida.classList.add('card-text');
+            pPrecioBebida.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
+
+            const pTextBebida = document.createElement('p');
+            pTextBebida.classList.add('card-text');
+            pTextBebida.textContent = producto.descripcion;
+
+            const btnComboMenuBebida = document.createElement('button');
+
+            btnComboMenuBebida.classList.add('btnComboMenu');
+            btnComboMenuBebida.textContent = "Agregar al carro de compras";
+            btnComboMenuBebida.onclick = () => {agregarACarrito(producto.id)}
+
+            divColBebida.appendChild(divCardBebida);
+            divCardBebida.appendChild(imagenProductoBebida);
+            divCardBebida.appendChild(divCardBodyBebida);
+            divCardBodyBebida.appendChild(pTitleBebida);
+            divCardBodyBebida.appendChild(pPrecioBebida);
+            divCardBodyBebida.appendChild(pTextBebida);
+            divCardBodyBebida.appendChild(btnComboMenuBebida);
+            contenedorBebidas.appendChild(divColBebida);
+        }
+        
     })
 
 };
