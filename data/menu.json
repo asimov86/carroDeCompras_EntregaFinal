@@ -1,14 +1,14 @@
 [
-    {"id":0, "nombre": "Combo 1", "precio": 890, "descripcion": "Hamburguesa simple con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen": "./images/hamburguesa_simple.jpg"},
-    {"id":1, "nombre": "Combo 2", "precio": 1180, "descripcion": "Hamburguesa doble con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen":"./images/hamburguesa_doble.jpg"},
-    {"id":2, "nombre": "Combo 3", "precio": 1360, "descripcion": "Hamburguesa triple con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen":"./images/hamburguesa_triple.jpg"},
-    {"id":3, "nombre": "Combo 4", "precio": 1420, "descripcion": "Hamburguesa doble con queso, pepinillos, rodajas de tomate, lechuga, bacon y papas fritas.", "imagen": "./images/hamburguesa_doble_bacon.jpg"},
-    {"id":4, "nombre": "Combo 5", "precio": 820, "descripcion": "Hamburguesa simple de pollo con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen": "./images/hamburguesa_pollo.jpg"},
-    {"id":5, "nombre": "Combo 6", "precio": 1120, "descripcion": "Hamburguesa doble con queso, huevo, rodajas de tomate, lechuga, bacon y papas fritas.", "imagen": "./images/hamburguesa_huevo_tocino.jpg"},
-    {"id":6, "nombre": "Coca Cola", "precio": 120, "descripcion": "Lata de refresco Coca Cola", "imagen": "./images/cocaCola.png"},
-    {"id":7, "nombre": "7Up", "precio": 120, "descripcion": "Lata de refresco 7Up", "imagen": "./images/7Up.jpg"},
-    {"id":8, "nombre": "Pepsi", "precio": 120, "descripcion": "Lata de refresco Pepsi", "imagen": "./images/pepsi.jpg"},
-    {"id":9, "nombre": "Sprite", "precio": 120, "descripcion": "Lata de refresco Sprite", "imagen": "./images/sprite.jpg"},
-    {"id":10, "nombre": "Agua con gas", "precio": 110, "descripcion": "Botella agua con gas", "imagen": "./images/aguaConGas.jpg"},
-    {"id":11, "nombre": "Agua", "precio": 110, "descripcion": "Botella de agua", "imagen": "./images/agua.jpg"}
+    {"id":0, "nombre": "Combo 1", "precio": 890, "descripcion": "Hamburguesa simple con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen": "./images/hamburguesa_simple.jpg", "tipo":"Comida"},
+    {"id":1, "nombre": "Combo 2", "precio": 1180, "descripcion": "Hamburguesa doble con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen":"./images/hamburguesa_doble.jpg", "tipo":"Comida"},
+    {"id":2, "nombre": "Combo 3", "precio": 1360, "descripcion": "Hamburguesa triple con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen":"./images/hamburguesa_triple.jpg", "tipo":"Comida"},
+    {"id":3, "nombre": "Combo 4", "precio": 1420, "descripcion": "Hamburguesa doble con queso, pepinillos, rodajas de tomate, lechuga, bacon y papas fritas.", "imagen": "./images/hamburguesa_doble_bacon.jpg", "tipo":"Comida"},
+    {"id":4, "nombre": "Combo 5", "precio": 820, "descripcion": "Hamburguesa simple de pollo con queso, pepinillos, rodajas de tomate, lechuga y papas fritas.", "imagen": "./images/hamburguesa_pollo.jpg", "tipo":"Comida"},
+    {"id":5, "nombre": "Combo 6", "precio": 1120, "descripcion": "Hamburguesa doble con queso, huevo, rodajas de tomate, lechuga, bacon y papas fritas.", "imagen": "./images/hamburguesa_huevo_tocino.jpg", "tipo":"Comida"},
+    {"id":6, "nombre": "Coca Cola", "precio": 120, "descripcion": "Lata de refresco Coca Cola", "imagen": "./images/cocaCola.png", "tipo":"Bebida"},
+    {"id":7, "nombre": "7Up", "precio": 120, "descripcion": "Lata de refresco 7Up", "imagen": "./images/7Up.jpg", "tipo":"Bebida"},
+    {"id":8, "nombre": "Pepsi", "precio": 120, "descripcion": "Lata de refresco Pepsi", "imagen": "./images/pepsi.jpg", "tipo":"Bebida"},
+    {"id":9, "nombre": "Sprite", "precio": 120, "descripcion": "Lata de refresco Sprite", "imagen": "./images/sprite.jpg", "tipo":"Bebida"},
+    {"id":10, "nombre": "Agua con gas", "precio": 110, "descripcion": "Botella agua con gas", "imagen": "./images/aguaConGas.jpg", "tipo":"Bebida"},
+    {"id":11, "nombre": "Agua", "precio": 110, "descripcion": "Botella de agua", "imagen": "./images/agua.jpg", "tipo":"Bebida"}
 ]
