@@ -16,8 +16,10 @@ let id=0;
 let nombre='';
 let parrafoImpreso=false;
 let arregloCarrito = [];
-
+let flagComida='false';
+let flagBebida='false';
 let contenedorPrecioFinal = document.createElement("div");
+let ultimoItem='false';
 
 class Producto{
     constructor(id, nombre, precio, descripcion, imagen){
@@ -38,18 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((menu) => {
         //productos=menu;
        menu.forEach(producto => {
-
-            console.log(producto);
             productos.push(producto);
         });
-        console.log(productos); 
         mostrarMenu();
+        
     })
     .catch(function(error) {
         console.log(error);
-        swal("Error al leer archivo json", "Revise el archivo json o la url.", "error");
-        //Agregué este alert para que indique que el error puede venir desde la lectura del JSON.
-        //Es válido hacer esto?
     });
 });
 
@@ -61,13 +58,17 @@ function buscarProducto(id){
     return;
 }
 
-const contenedorComidas = document.querySelector(".contenedor-comidass");
-const contenedorBebidas = document.querySelector(".contenedor-bebidas");
+const contenedorParrafoC = document.querySelector(".parrafoComida");
+const contenedorParrafoB = document.querySelector(".parrafoBebida");
+const contenedorComida = document.querySelector(".contenedor-comida");
+const contenedorBebida = document.querySelector(".contenedor-bebida");
 const contenedorCarrito = document.querySelector(".contenedor-carrito");
-const contenedorParrafo = document.querySelector(".contenedor-parrafo");
+const contenedorParrafo = document.querySelector(".contenedor-parrafo");////////////////////////El problema parte de acá al parecer
 const contenedorBotones = document.querySelector("#botones");
+const contenedorSubtitulo = document.querySelector("#subtitulo");
 const btn = document.querySelector(".btnCalcular");
 const btn2 = document.querySelector(".btnBorrar");
+const btnVolver =document.querySelector(".btnVolver");
 
 
 //Funciones
@@ -81,14 +82,29 @@ function guardaLocalStorage(){
 function traeLocalStorage(){
     //Leemos del localStorage los productos comprados.
     let traeProductosJSON = JSON.parse(localStorage.getItem("carrito"));
+    arregloCarrito=traeProductosJSON;  
 }
 
+function limpiaLocalStorage(){
+    localStorage.clear();
+}
+
+
+////// En vez de colocar el parrafo en un P colocarlo en un h4 y este h4 colocarlo antes del div.
 function mostrarMenu(){
+
     productos.forEach( function (producto){
-        let {nombre, precio, descripcion, imagen, tipo} = producto;
-        console.log(tipo);
+        let {id, nombre, precio, descripcion, imagen, tipo} = producto;
         if(tipo==="Comida"){
-            console.log("Es comida");
+            if(flagComida==='false'){
+                flagComida='true';
+                const hrComida = document.createElement('hr');
+                const pComida = document.createElement('p');
+                pComida.classList.add('contenedorComida', 'h4');
+                pComida.textContent = "Elegí tu combo preferido.";
+                contenedorParrafoC.appendChild(pComida);
+                contenedorParrafoC.appendChild(hrComida);
+            }
             const divColComida = document.createElement('div');
             divColComida.classList.add('col');
 
@@ -96,7 +112,7 @@ function mostrarMenu(){
             divCardComida.classList.add('card');
 
             const imagenProductoComida = document.createElement('img');
-            imagenProductoComida.src = producto.imagen;
+            imagenProductoComida.src = imagen;
             imagenProductoComida.classList.add('card-img-top');
 
             const divCardBodyComida = document.createElement('div');
@@ -104,21 +120,21 @@ function mostrarMenu(){
 
             const pTitleComida = document.createElement('p');
             pTitleComida.classList.add('card-title');
-            pTitleComida.textContent = producto.nombre;
+            pTitleComida.textContent = nombre;
 
             const pPrecioComida = document.createElement('p');
             pPrecioComida.classList.add('card-text');
-            pPrecioComida.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
+            pPrecioComida.textContent = 'A pagar ' + precio + ' pesos (ARS)';
 
             const pTextComida = document.createElement('p');
             pTextComida.classList.add('card-text');
-            pTextComida.textContent = producto.descripcion;
+            pTextComida.textContent = descripcion;
 
             const btnComboMenuComida = document.createElement('button');
 
-            btnComboMenuComida.classList.add('btnComboMenu');
+            btnComboMenuComida.classList.add("btnComboMenu", "btn");
             btnComboMenuComida.textContent = "Agregar al carro de compras";
-            btnComboMenuComida.onclick = () => {agregarACarrito(producto.id)}
+            btnComboMenuComida.onclick = () => {agregarACarrito(id)}
 
             divColComida.appendChild(divCardComida);
             divCardComida.appendChild(imagenProductoComida);
@@ -127,8 +143,17 @@ function mostrarMenu(){
             divCardBodyComida.appendChild(pPrecioComida);
             divCardBodyComida.appendChild(pTextComida);
             divCardBodyComida.appendChild(btnComboMenuComida);
-            contenedorComidas.appendChild(divColComida);
+            contenedorComida.appendChild(divColComida);
         }else{
+            if(flagBebida==='false'){
+                flagBebida='true';
+                const hrBebida = document.createElement('hr');
+                const pBebidas = document.createElement('p');
+                pBebidas.classList.add('contenedorBebida', 'h4', 'col-12');
+                pBebidas.textContent = "Elegí tu bebida preferida.";
+                contenedorParrafoB.appendChild(pBebidas);
+                contenedorParrafoB.appendChild(hrBebida);
+            }
             const divColBebida = document.createElement('div');
             divColBebida.classList.add('col');
 
@@ -136,7 +161,7 @@ function mostrarMenu(){
             divCardBebida.classList.add('card');
 
             const imagenProductoBebida = document.createElement('img');
-            imagenProductoBebida.src = producto.imagen;
+            imagenProductoBebida.src = imagen;
             imagenProductoBebida.classList.add('card-img-top');
 
             const divCardBodyBebida = document.createElement('div');
@@ -144,21 +169,21 @@ function mostrarMenu(){
 
             const pTitleBebida = document.createElement('p');
             pTitleBebida.classList.add('card-title');
-            pTitleBebida.textContent = producto.nombre;
+            pTitleBebida.textContent = nombre;
 
             const pPrecioBebida = document.createElement('p');
             pPrecioBebida.classList.add('card-text');
-            pPrecioBebida.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
+            pPrecioBebida.textContent = 'A pagar ' + precio + ' pesos (ARS)';
 
             const pTextBebida = document.createElement('p');
             pTextBebida.classList.add('card-text');
-            pTextBebida.textContent = producto.descripcion;
+            pTextBebida.textContent = descripcion;
 
             const btnComboMenuBebida = document.createElement('button');
 
-            btnComboMenuBebida.classList.add('btnComboMenu');
+            btnComboMenuBebida.classList.add("btnComboMenu", "btn");
             btnComboMenuBebida.textContent = "Agregar al carro de compras";
-            btnComboMenuBebida.onclick = () => {agregarACarrito(producto.id)}
+            btnComboMenuBebida.onclick = () => {agregarACarrito(id)}
 
             divColBebida.appendChild(divCardBebida);
             divCardBebida.appendChild(imagenProductoBebida);
@@ -167,25 +192,33 @@ function mostrarMenu(){
             divCardBodyBebida.appendChild(pPrecioBebida);
             divCardBodyBebida.appendChild(pTextBebida);
             divCardBodyBebida.appendChild(btnComboMenuBebida);
-            contenedorBebidas.appendChild(divColBebida);
+            contenedorBebida.appendChild(divColBebida);
         }
         
     })
-
+    /* Acá verifico, si hay algo en el localstorage lo muestro*/
+    if(localStorage.length===1){
+        mostrarCarrito();
+    }
+    
 };
-
+//////////////////////// Muestro carrito luego de seleccionar producto.
 function mostrarCarrito(){
     contenedorCarrito.innerHTML = "";//Limpia el array de carrito al agregar otro producto.
-
-    if(parrafoImpreso===false){
-        const pedidoP = document.createElement('p');
-        pedidoP.classList.add('pedido');
-        pedidoP.setAttribute("id", "parrafoP");
-        pedidoP.textContent = "Has agregado los siguientes productos a tu carro de compras:";
-        contenedorParrafo.appendChild(pedidoP);
+    const lineaP=document.createElement('hr');
+    contenedorParrafo.classList.add("pedido", "mt-5", "h4");
+    contenedorParrafo.setAttribute("id", "parrafoP");
+    contenedorParrafo.textContent = "Has agregado los siguientes productos a tu carro de compras:";
+    contenedorParrafo.appendChild(lineaP);
+    //Si hay algo en el localstorage lo traigo antes de pedir algo más.
+    if(arregloCarrito.length===0){
+        traeLocalStorage();
     }
-
+    
     arregloCarrito.forEach( function (producto){
+    
+        let {id, nombre, precio, descripcion, imagen, tipo} = producto;
+
         const divCol = document.createElement('div');
         divCol.classList.add('col');
 
@@ -193,7 +226,7 @@ function mostrarCarrito(){
         divCard.classList.add('card');
 
         const imagenProducto = document.createElement('img');
-        imagenProducto.src = producto.imagen;
+        imagenProducto.src = imagen;
         imagenProducto.classList.add('card-img-top');
 
         const divCardBody = document.createElement('div');
@@ -201,20 +234,21 @@ function mostrarCarrito(){
 
         const pTitle = document.createElement('p');
         pTitle.classList.add('card-title');
-        pTitle.textContent = producto.nombre;
+        pTitle.textContent = nombre;
 
         const pText = document.createElement('p');
         pText.classList.add('card-text');
-        pText.textContent = producto.descripcion;
+        pText.textContent = descripcion;
 
         const pPrecio = document.createElement('p');
         pPrecio.classList.add('card-text');
-        pPrecio.textContent = 'A pagar ' + producto.precio + ' pesos (ARS)';
+        pPrecio.textContent = 'A pagar ' + precio + ' pesos (ARS)';
 
         const btnComboCarrito = document.createElement('button');
-        btnComboCarrito.classList.add('btnCarrito');
+        btnComboCarrito.classList.add("btnCarrito", "btn");
         btnComboCarrito.textContent = "Sacar del carro de compras";
-        btnComboCarrito.onclick = () => {sacarDeCarrito(producto.id)}
+        btnComboCarrito.onclick = () => {
+            sacarDeCarrito(id)}
 
         divCol.appendChild(divCard);
         divCard.appendChild(imagenProducto);
@@ -225,8 +259,7 @@ function mostrarCarrito(){
         divCardBody.appendChild(btnComboCarrito);
 
         contenedorCarrito.appendChild(divCol);
-    })
-    parrafoImpreso=true;
+    });
 
 };
 
@@ -257,7 +290,7 @@ function mostrarCompra(){
 
     arregloCarrito.forEach( function (producto){
         //Desestructuración
-        const {id, nombre, precio} = producto; 
+        let {id, nombre, precio} = producto; 
 
         const divColP = document.createElement('div');
         divColP.classList.add('col');
@@ -277,22 +310,26 @@ function mostrarCompra(){
     pagoT.textContent = 'El monto total a pagar es de ' + total + ' pesos (ARS)';
 
     const btnPago = document.createElement('button');
-    btnPago.classList.add('btnPagoCompra');
+    btnPago.classList.add("btnPagoCompra", "btn");
     btnPago.textContent = "Pagar";
     btnPago.onclick = () => {console.log("Proceso de pago.")}
 
+    const btnVolver = document.createElement('button');
+    btnVolver.classList.add("btnVolver", "btn");
+    btnVolver.textContent = "Seguir comprando";
+    btnVolver.onclick = () => {volver()}
+
     contenedorBotones.appendChild(pagoT);
     contenedorBotones.appendChild(btnPago);
+    contenedorBotones.appendChild(btnVolver);
 };
 
 //Agrega producto a carrito
 function agregarACarrito(id){
     let productoAgregado = productos.find(producto => producto.id === id);
     id=parseInt(productoAgregado.id);   
-    console.log(id);
     buscarProducto(id);
     let posicionProducto = arregloCarrito.length;
-        console.log("Posicion " + posicionProducto);
         let productoElegido = {
             id : id,
             nombre : nombreProducto,
@@ -301,7 +338,6 @@ function agregarACarrito(id){
             imagen: imagenProducto,
             posicion : posicionProducto
         }
-    console.log(productoElegido);
     arregloCarrito.push(productoElegido);
     mostrarCarrito(arregloCarrito);
     guardaLocalStorage();
@@ -310,43 +346,111 @@ function agregarACarrito(id){
 //Elimina producto de carrito
 function sacarDeCarrito(id){
     const productoEliminado = productos.find(producto => producto.id === id);
-    console.log("Producto eliminado");
-    console.log(productoEliminado);
-    console.log("Carrito");
-    console.log(arregloCarrito);
-    console.log("ID");
     const idProducto= productoEliminado.id;
-    console.log(idProducto);
-
     //Traigo del localStorage los productos.
     const productosStorage = JSON.parse(localStorage.getItem('carrito'));
     for (i=0; i<arregloCarrito.length; i++) {
-        console.log("Carrito");
-        console.log(arregloCarrito[i]);
-        console.log("Producto de carrito");
-        console.log(productosStorage);
         const posicionProductoEliminado = productosStorage[i].posicion;
         const idProductoEliminado = productosStorage[i].id;
-        console.log("Posicion de compra eliminada");
-        console.log(posicionProductoEliminado);
         if(idProductoEliminado === idProducto){
-            console.log("A eliminar");
             let eliminado = arregloCarrito.splice(posicionProductoEliminado,1);
-
-        }
+        } 
     }
+    
     for (let i = 0; i < arregloCarrito.length; i++) {//Actualizo la posición de los productos en el array luego de borrar un item.
-       arregloCarrito[i].posicion = i;
-     }    
-    mostrarCarrito(arregloCarrito);
+        arregloCarrito[i].posicion = i;
+    }  
+    if(productosStorage.length===1){
+        arregloCarrito=[];
+        limpiaLocalStorage();
+        limpiarCarrito();
+    }else{
+        mostrarCarrito(arregloCarrito);
+    }
+    
     guardaLocalStorage();
 }
 
+//Si me devuelvo para comprar algo más uso esta función.
+function comenzarDeNuevo(){
+    parrafoImpreso='false';
+
+    const subtitulo = document.createElement('h2');
+    subtitulo.classList.add("text-start", "mt-5");
+    subtitulo.textContent = "Realizá tu pedido.";
+    contenedorSubtitulo.appendChild(subtitulo);
+
+    let lineaC = document.createElement('hr');
+    let lineaB = document.createElement('hr');
+    let lineaP = document.createElement('hr');
+
+    contenedorParrafoC.classList.add("parrafoComida", "h4", "mt-5");
+    contenedorParrafoC.textContent = "Elegí tu combo preferido.";
+    contenedorParrafoC.appendChild(lineaC);
+    
+
+    contenedorParrafoB.classList.add("parrafoBebida", "h4", "mt-5");
+    contenedorParrafoB.textContent = "Elegí tu bebida preferida.";
+    contenedorParrafoB.appendChild(lineaB);
+
+    const pedidoParrafo = document.createElement('p');
+    pedidoParrafo.classList.add("pedido", "mt-5", "h4");
+    pedidoParrafo.setAttribute("id", "parrafoP");
+    pedidoParrafo.textContent = "Has agregado los siguientes productos a tu carro de compras:";
+    contenedorParrafo.appendChild(pedidoParrafo);
+    contenedorParrafo.appendChild(lineaP);
+
+    const botonCalcular = document.createElement("button");
+    botonCalcular.classList.add("btn", "btn-outline-secondary", "px-5", "mx-5", "my-1", "btnCalcular");
+    botonCalcular.innerText="Calcular compra";
+    botonCalcular.setAttribute("id", "btnCalcular");
+    contenedorBotones.appendChild(botonCalcular);
+    botonCalcular.onclick = () => {
+        if(arregloCarrito.length===0){
+            swal("Elija un producto!", "Su carrito está vacío.", "error")}
+        else {
+            elementNameExists = !!document.getElementById("carrito").getElementsByTagName("p");
+            total=0;
+            const productosStorage = JSON.parse(localStorage.getItem('carrito'));
+            for(const item of productosStorage){
+                total=total+item.precio; 
+            }
+            limpiarCarrito();
+            limpiarBotones();
+            limpiarMenu();
+            mostrarCompra(arregloCarrito, total);
+        }
+    }
+
+    const botonLimpiar = document.createElement("button");
+    botonLimpiar.classList.add("btn", "btn-outline-secondary", "px-5", "mx-5", "my-1", "btnBorrar");
+    botonLimpiar.innerText="Limpiar compra";
+    botonLimpiar.setAttribute("id", "btnBorrar");
+    contenedorBotones.appendChild(botonLimpiar);
+    botonLimpiar.onclick=()=> {
+        limpiarCarrito();
+        vaciarArray(arregloCarrito);
+        localStorage.clear();
+    }
+}
+
 function limpiarMenu(){
-    var elementoMenu = document.getElementById("contenedor-productos");
+    var elementoParrafoComida = document.getElementById("parrafoComida");
+    var elementoContenedorComida = document.getElementById("contenedor-comida");
+    var elementoParrafobebida = document.getElementById("parrafoBebida");
+    var elementoContenedorbebida = document.getElementById("contenedor-bebida");
     var elementoSubtitulo = document.getElementById("subtitulo");
-    while(elementoMenu.hasChildNodes()){
-        elementoMenu.removeChild(elementoMenu.firstChild);
+    while(elementoParrafoComida.hasChildNodes()){
+        elementoParrafoComida.removeChild(elementoParrafoComida.firstChild);
+    }
+    while(elementoContenedorComida.hasChildNodes()){
+        elementoContenedorComida.removeChild(elementoContenedorComida.firstChild);
+    }
+    while(elementoParrafobebida.hasChildNodes()){
+        elementoParrafobebida.removeChild(elementoParrafobebida.firstChild);
+    }
+    while(elementoContenedorbebida.hasChildNodes()){
+        elementoContenedorbebida.removeChild(elementoContenedorbebida.firstChild);
     }
     while(elementoSubtitulo.hasChildNodes()){
         elementoSubtitulo.removeChild(elementoSubtitulo.firstChild);
@@ -362,7 +466,6 @@ function limpiarCarrito(){
     while(elementoParrafo.hasChildNodes()){
         elementoParrafo.removeChild(elementoParrafo.firstChild);
     }
-    
 }
 
 function limpiarBotones(){
@@ -376,8 +479,15 @@ function limpiarPrecioTotal(){
     var elementoPrecioTotal = document.getElementById("precioTotal");
     while(elementoPrecioTotal.hasChildNodes()){
         elementoPrecioTotal.removeChild(elementoPrecioTotal.firstChild);
-        console.log(elementoPrecioTotal);
     }
+}
+
+//Volver a menu
+function volver(){
+    limpiarBotones();
+    comenzarDeNuevo();
+    mostrarMenu();
+    mostrarCarrito();
 }
 
 //Vacia un array
@@ -392,22 +502,17 @@ btn.addEventListener("click", function (e) {
     if(arregloCarrito.length===0){
         swal("Elija un producto!", "Su carrito está vacío.", "error")}
     else {
-        // console.log(carrito);
         elementNameExists = !!document.getElementById("carrito").getElementsByTagName("p");
         total=0;
         const productosStorage = JSON.parse(localStorage.getItem('carrito'));
         for(const item of productosStorage){
             total=total+item.precio; 
         }
-        console.log(total);
         limpiarCarrito();
         limpiarBotones();
         limpiarMenu();
         mostrarCompra(arregloCarrito, total);
-    };
-    
-
-    
+    }
 });
 
 
@@ -418,6 +523,3 @@ btn2.addEventListener("click", function (e) {
     vaciarArray(arregloCarrito);
     localStorage.clear();
 });
-
-
-

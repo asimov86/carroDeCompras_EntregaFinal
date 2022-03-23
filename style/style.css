@@ -23,6 +23,17 @@ body {
   margin-bottom: 200px;
 }
 
+body .parrafoComida{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+}
+
+body .parrafoBebida{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+}
 
   .footer {
     position: absolute;
@@ -147,7 +158,18 @@ body {
     width: 18rem;
   }
 
+.btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    display: inline-block;
+    margin: 20px 10px;
+}
 
+.btn:hover {
+    background-color: #555555;
+    color: white;
+}
 
   /*botón*/
   .bg-propio{
