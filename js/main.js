@@ -70,7 +70,6 @@ const btn = document.querySelector(".btnCalcular");
 const btn2 = document.querySelector(".btnBorrar");
 const btnVolver =document.querySelector(".btnVolver");
 
-
 //Funciones
 
 function guardaLocalStorage(){
@@ -132,9 +131,13 @@ function mostrarMenu(){
 
             const btnComboMenuComida = document.createElement('button');
 
+            btnComboMenuComida.setAttribute("id", "bottompage");
             btnComboMenuComida.classList.add("btnComboMenu", "btn");
             btnComboMenuComida.textContent = "Agregar al carro de compras";
-            btnComboMenuComida.onclick = () => {agregarACarrito(id)}
+            btnComboMenuComida.onclick = () => {
+                agregarACarrito(id);
+                window.scrollTo(0, document.body.scrollHeight);
+            }
 
             divColComida.appendChild(divCardComida);
             divCardComida.appendChild(imagenProductoComida);
@@ -183,7 +186,10 @@ function mostrarMenu(){
 
             btnComboMenuBebida.classList.add("btnComboMenu", "btn");
             btnComboMenuBebida.textContent = "Agregar al carro de compras";
-            btnComboMenuBebida.onclick = () => {agregarACarrito(id)}
+            btnComboMenuBebida.onclick = () => {
+                agregarACarrito(id);
+                window.scrollTo(0, document.body.scrollHeight);
+            }
 
             divColBebida.appendChild(divCardBebida);
             divCardBebida.appendChild(imagenProductoBebida);
@@ -265,7 +271,6 @@ function mostrarCarrito(){
 
 
 function mostrarCompra(){
-    //contenedorCarrito.innerHTML = "";//Limpia el array de carrito al agregar otro producto.
     //Formato fecha y hora
     const horaFecha = DateTime.local();
 

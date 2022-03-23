@@ -13,8 +13,6 @@ nav{
     position: relative;
 }
 
-
-
 body .carrito{
   width: 100%;
 }
@@ -35,107 +33,68 @@ body .parrafoBebida{
   margin-left: 0px;
 }
 
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 140px;
-    background-color: rgb(50, 59, 67);
-    color: white;
-  }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background-color: rgb(50, 59, 67);
+  color: white;
+}
   
-  .footer .redesSociales img{
-    width: 26px;
-    height: 26px;
-    float: right;
-    margin-right: 20px; 
-    margin-top: 5px;
-  }
+.footer .redesSociales img{
+  width: 26px;
+  height: 26px;
+  float: right;
+  margin-right: 20px; 
+  margin-top: 5px;
+}
 
-  /* Agrego transformación */
-  .footer .redesSociales img:hover{
-    transform: scale(1.2);
-  }
+/* Agrego transformación */
+.footer .redesSociales img:hover{
+  transform: scale(1.2);
+}
 
-  .footer #eslogan p{
-    margin-top: 20px;
-    margin-left: 30%;
-    font-size: 14px;
-
-  }
+.footer #eslogan p{
+  margin-top: 20px;
+  margin-left: 30%;
+  font-size: 14px;
+}
  
-  .footer #redes .card-title p{
-    margin-top: 45px;
-    margin-left: 55%;
-    font-size: 14px;
-    width: 12%;
-  }
+.footer #redes .card-title p{
+  margin-top: 45px;
+  margin-left: 55%;
+  font-size: 14px;
+  width: 12%;
+}
   
-  .footer #redes .redesSociales{
-    width: 30%;
-    height: 30px;
-    margin-left: 40%;
-  }
+.footer #redes .redesSociales{
+  width: 30%;
+  height: 30px;
+  margin-left: 40%;
+}
 
+.footer .copyright{
+  font-size: 10px;
+}
   
-  
-  .footer .copyright{
-    font-size: 10px;
-  }
-  
-  #main {
-    height: 70vh;
-    margin: 10px;
-  }
-  
-  #main #publicidad{
-    height: 60vh;
-    background-image: url("../images/fravega.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-  
-  }
+#main {
+  height: 70vh;
+  margin: 10px;
+}
 
-  .contactar {
-    background-image: url("../images/contacto_3.png");
-    background-repeat: repeat;
-  }
+.contactar {
+  background-image: url("../images/contacto_3.png");
+  background-repeat: repeat;
+}
 
-
-
-
-  .botones{
-    text-align: center;
-  }
+.botones{
+  text-align: center;
+}
 
 .publicidad{
   text-align: center;
 }
-
-
-.subtituloVistozo{
-  width: 100%; 
-  background-color: #2b4c39;
-  color: white;
-}
-
-.subtituloVistozoArriba .letrasBlancas{
-  color: white;
-}
-
-.subtituloVistozoArriba{
-  background-color: #2b4c39; 
-  height: 76px; 
-  margin: auto;
-  border: 1 px solid black;
-}
-
-.subtituloVistozoArriba .img{
-  width: 6px; 
-  height: 66px; 
-}
-
 
 .subtitulo img{
   width: 66px; 
@@ -154,9 +113,9 @@ body .parrafoBebida{
     justify-content: center !important;
 }
 
-  .col .card{
-    width: 18rem;
-  }
+.col .card{
+  width: 18rem;
+}
 
 .btn {
     background-color: white;
@@ -172,23 +131,22 @@ body .parrafoBebida{
 }
 
   /*botón*/
-  .bg-propio{
-      background-color: #2b4c39;
-      transition: 0.5s;
-      color: black;
+.bg-propio{
+  background-color: #2b4c39;
+  transition: 0.5s;
+  color: black;
 
-  }
+}
 
-  .bg-propio:hover{
-      background-color: #efbd71;
-  }
+.bg-propio:hover{
+  background-color: #efbd71;
+}
 
-  .logo{
-    width: 45px; 
-    height: 45px;
-  }
+.logo{
+  width: 45px; 
+  height: 45px;
+}
 
-  /*  /////////////////////////////////// */
 
 /* Animación */
 .animaTexto{
@@ -197,30 +155,6 @@ body .parrafoBebida{
   animation-duration: 6s;
   animation-delay: 2s;
 }
-
-
-/* @keyframes efecto{
-  0% {
-      transform: translateX(0)
-  }
-  
-  25% {
-      transform: translateX(100px)
-  }
-
-  50% {
-      transform: translateX(200px)
-  }
-
-  75% {
-      transform: translateX(100px)
-  }
-
-  100%{
-      transform: translateX(0px)
-  }
-  
-} */
 
 @keyframes efecto{
   from{
