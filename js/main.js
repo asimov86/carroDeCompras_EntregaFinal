@@ -63,7 +63,7 @@ const contenedorParrafoB = document.querySelector(".parrafoBebida");
 const contenedorComida = document.querySelector(".contenedor-comida");
 const contenedorBebida = document.querySelector(".contenedor-bebida");
 const contenedorCarrito = document.querySelector(".contenedor-carrito");
-const contenedorParrafo = document.querySelector(".contenedor-parrafo");////////////////////////El problema parte de acá al parecer
+const contenedorParrafo = document.querySelector(".contenedor-parrafo");
 const contenedorBotones = document.querySelector("#botones");
 const contenedorSubtitulo = document.querySelector("#subtitulo");
 const btn = document.querySelector(".btnCalcular");
@@ -89,7 +89,7 @@ function limpiaLocalStorage(){
 }
 
 
-////// En vez de colocar el parrafo en un P colocarlo en un h4 y este h4 colocarlo antes del div.
+////// Mostramos el menu dependiendo si es comida o bebida
 function mostrarMenu(){
 
     productos.forEach( function (producto){
@@ -269,7 +269,7 @@ function mostrarCarrito(){
 
 };
 
-
+//Mostramos la compra realizada. Con la opción de volver a comprar si es necesario.
 function mostrarCompra(){
     //Formato fecha y hora
     const horaFecha = DateTime.local();
@@ -376,7 +376,7 @@ function sacarDeCarrito(id){
     guardaLocalStorage();
 }
 
-//Si me devuelvo para comprar algo más uso esta función.
+//Si me devuelvo para comprar otro producto uso esta función.
 function comenzarDeNuevo(){
     parrafoImpreso='false';
 
